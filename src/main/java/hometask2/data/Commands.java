@@ -1,4 +1,4 @@
-package hometask2.animals.data;
+package hometask2.data;
 
 public enum Commands {
     ADD,
