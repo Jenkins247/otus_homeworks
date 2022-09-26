@@ -1,6 +1,6 @@
-package hometask2;
+package hometask2.animals;
 
-public class Animal {
+public abstract class Animal {
     private String name;
     private int age;
     private int weight;

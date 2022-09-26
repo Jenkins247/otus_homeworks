@@ -1,4 +1,4 @@
-package hometask2;
+package hometask2.impl;
 
 public interface Flying {
     void fly();
