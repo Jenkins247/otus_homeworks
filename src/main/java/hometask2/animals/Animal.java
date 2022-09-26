@@ -66,6 +66,6 @@ public abstract class Animal {
             year = "лет";
         }
 
-        return "Привет! меня зовут " + name + ", мне " + age + " " + year + ", я вешу - " + weight + " кг, мой цвет - " + color;
+        return "Привет! Меня зовут " + name + ", мне " + age + " " + year + ", я вешу - " + weight + " кг, мой цвет - " + color;
     }
 }

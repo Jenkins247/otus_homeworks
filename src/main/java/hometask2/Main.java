@@ -2,7 +2,7 @@ package hometask2;
 
 import hometask2.animals.Animal;
 import hometask2.animals.birds.Duck;
-import hometask2.animals.data.Commands;
+import hometask2.data.Commands;
 import hometask2.animals.mammals.Cat;
 import hometask2.animals.mammals.Dog;
 
