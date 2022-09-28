@@ -51,7 +51,7 @@ public class Main {
 
         Animal animal = null;
         int age = 0;
-        int weigh = 0;
+        int weight = 0;
         while (animal == null) {
 
             System.out.println("Какое животное (cat/dog/duck)?");
@@ -93,15 +93,16 @@ public class Main {
         }
 
         System.out.println("Введите вес: ");
-        while (weigh <= 0) {
+        while (weight <= 0) {
             while (!scanner.hasNextInt()) {
                 System.out.println("Вес должен быть числом. Попробуйте снова.");
                 scanner.next();
             }
-            weigh = scanner.nextInt();
-            animal.setAge(weigh);
-            if (weigh <= 0) {
+            weight = scanner.nextInt();
+            animal.setWeight(weight);
+            if (weight <= 0) {
                 System.out.println("Вес должен быть положительным числом. Попробуйте снова");
+
             }
         }
 
