@@ -3,38 +3,28 @@ package hometask3;
 import hometask3.db.IDbExecutor;
 import hometask3.db.MySqlDbExecutor;
 import hometask3.tables.AbsTable;
-import hometask3.tables.Student;
-
-import java.sql.ResultSet;
+import hometask3.tables.Curators;
+import hometask3.tables.StudyGroups;
+import hometask3.tables.Students;
 import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
         IDbExecutor iDbExecutor = new MySqlDbExecutor();
-        AbsTable student = new Student();
+        AbsTable student = new Students();
+        AbsTable group = new StudyGroups();
+        AbsTable curator = new Curators();
 
-        try{
-            ResultSet tables = iDbExecutor.execute("show tables;", true);
-            boolean isTableCreated = false;
-            while (tables.next()){
-                if(tables.getString(1).equals("students")){
-                    isTableCreated = true;
-                    break;
-                }
-            }
 
-            if(isTableCreated){
-                student.delete();
-            }
-            student.create();
-            iDbExecutor.execute("INSERT INTO students values ('Ivan', 'Ivanov')", false);
-            ResultSet students = iDbExecutor.execute("SELECT * FROM students", true);
-            while(students.next()){
-                System.out.println(students.getString(1));
-                System.out.println(students.getString(2));
-            }
-        }finally {
-            student.getiDbExecutor().close();
+        try {
+            student.create(student);
+            group.create(group);
+            curator.create(curator);
+
+
+        } finally {
+            iDbExecutor.close();
         }
+
     }
 }

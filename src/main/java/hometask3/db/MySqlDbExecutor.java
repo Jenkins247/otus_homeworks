@@ -1,15 +1,11 @@
 package hometask3.db;
-
 import hometask3.utils.resources.IResources;
 import hometask3.utils.resources.PropertiesReader;
-
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MySqlDbExecutor implements IDbExecutor {
-
-
     private static Connection connection = null;
     private static Statement statement = null;
 
