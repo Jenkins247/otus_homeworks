@@ -1,22 +1,25 @@
 package hometask3.tables;
 
+import hometask3.entities.Curator;
+
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class Curators extends AbsTable{
-    private final static String ID = "id int";
-    private final static String FULLNAME = "full_name varchar(50)";
-
+public class Curators extends AbsTable {
     public Curators() {
-        super("Curators");
+        super("Curators", new ArrayList<>() {{
+            add("id int");
+            add("fullName varchar(50)");
+        }});
     }
 
-    @Override
-    public void create(AbsTable table) throws SQLException {
-            if (isTableExists(getTableName())) {
-                table.delete();
-            }
-            iDbExecutor.execute(String.format("CREATE TABLE %s (%s, %s);",
-                            getTableName(), ID, FULLNAME),
-                    false);
+    public void insertRows(Curator curator) throws SQLException {
+        iDbExecutor.execute(String.format("INSERT INTO %s (id, fullName) VALUES (%s, '%s');",
+                getTableName(),
+                curator.getId(),
+                curator.getFullName()), false);
+
     }
+
+
 }

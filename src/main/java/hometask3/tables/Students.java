@@ -1,29 +1,30 @@
 package hometask3.tables;
 
+import hometask3.entities.Student;
+
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Random;
 
-public class Students extends AbsTable{
-
-    private final static String ID = "id int";
-    private final static String FULLNAME = "full_name varchar(50)";
-    private final static String SEX = "sex varchar(50)";
-    private final static String GROUP_ID = "group_id int";
-
+public class Students extends AbsTable {
     public Students() {
-        super("Students");
+        super("Students", new ArrayList<>() {{
+            add("id int");
+            add("fullName varchar(50)");
+            add("gender varchar(50)");
+            add("groupId int");
+        }});
 
     }
 
-
-    @Override
-    public void create(AbsTable table) throws SQLException {
-
-            if (isTableExists(getTableName())) {
-                table.delete();
-            }
-            iDbExecutor.execute(String.format("CREATE TABLE %s (%s, %s, %s, %s);",
-                            getTableName(), ID, FULLNAME, SEX, GROUP_ID),
-                    false);
-
+    public void insertRows(Student student) throws SQLException {
+        iDbExecutor.execute(String.format("INSERT INTO %s (id, fullName, gender, groupId) VALUES (%s, '%s', '%s', %s);",
+                getTableName(),
+                student.getId(),
+                student.getFullName(),
+                student.getGender(),
+                getIdAllRows("StudyGroups").stream().skip(
+                                new Random().nextInt(getIdAllRows("StudyGroups").size()))
+                        .findFirst().orElse(null)), false);
     }
 }
