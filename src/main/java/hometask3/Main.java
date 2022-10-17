@@ -47,6 +47,25 @@ public class Main {
                 studentData.setId(studentData.getId() + 1);
             }
 
+            System.out.println("\nВывести на экран информацию о всех студентах включая название группы и имя куратора:");
+            student.printResultSet(student.getStudentsWithGroupsAndCurators());
+
+            System.out.println("\nВывести на экран количество студентов:");
+            student.printResultSet(student.getCount());
+
+            System.out.println("\nВывести студенток:");
+            student.printResultSet(student.getFemaleStudents());
+
+            System.out.println("\nОбновить данные по группе сменив куратора:");
+            group.updateCuratorIdFromGroup(2,4);
+
+            System.out.println("\nВывести список групп с их кураторами:");
+            group.printResultSet(group.getGroupsWithCurators());
+
+            System.out.println("\nВывести на экран студентов из определенной группы(поиск по имени группы):");
+            student.printResultSet(student.getStudentsByGroup());
+
+
         } finally {
             iDbExecutor.close();
         }

@@ -1,9 +1,11 @@
 package hometask3.tables;
 
+
 import hometask3.db.IDbExecutor;
 import hometask3.db.MySqlDbExecutor;
 
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.List;
@@ -71,4 +73,16 @@ public abstract class AbsTable implements ITable {
 
     }
 
+    public void printResultSet(ResultSet resultSet) throws SQLException {
+        ResultSetMetaData rsmd = resultSet.getMetaData();
+        int columnsNumber = rsmd.getColumnCount();
+        while (resultSet.next()) {
+            for (int i = 1; i <= columnsNumber; i++) {
+                if (i > 1) System.out.print("  |  ");
+                String columnValue = resultSet.getString(i);
+                System.out.print(String.format("%s: %s", rsmd.getColumnName(i), columnValue));
+            }
+            System.out.println("");
+        }
+    }
 }
