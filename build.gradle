@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    dependencies {
+        implementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+        implementation 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+        implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.5.0'
+        implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.18.0'
+        implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '4.2.0'
+    }
+}
+
+test {
+    useJUnitPlatform()
+    systemProperty "browser", System.getProperty("browser")
+    systemProperty "mode", System.getProperty("mode")
+    systemProperty "host1", "https://duckduckgo.com/?t=ha&va=j"
+    systemProperty "host2", "https://demo.w3layouts.com/" +
+            "demos_new/" +
+            "template_demo/" +
+            "03-10-2020/" +
+            "photoflash-liberty-demo_Free/" +
+            "685659620/" +
+            "web/" +
+            "index.html"
+    systemProperty "host3", "https://otus.ru"
+    systemProperty "email", System.getProperty("email")
+    systemProperty "password", System.getProperty("password")
+
+}
