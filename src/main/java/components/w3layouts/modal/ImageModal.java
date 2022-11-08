@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class ImageModal extends AbsBaseComponent {
+public class ImageModal extends AbsBaseComponent implements IModalVisibility{
 
     public ImageModal(WebDriver driver) {
         super(driver);
@@ -19,10 +19,16 @@ public class ImageModal extends AbsBaseComponent {
     @FindBy(css = "img[id='fullResImage']")
     private WebElement fullResImage;
 
-    public void modalIsDisplayed(){
+    @Override
+    public void modalShouldNotBeView() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        Assertions.assertEquals(true, wait.until(ExpectedConditions.invisibilityOf(fullResImage)));
+    }
+
+    @Override
+    public void modalShouldBeView() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOf(fullResImage));
         Assertions.assertTrue(fullResImage.isDisplayed());
     }
-
 }

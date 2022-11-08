@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class ChromeWebDriver implements iDriver {
+public class ChromeWebDriver implements IDriver {
     @Override
     public WebDriver newDriver() {
         ChromeOptions chromeOptions = new ChromeOptions();

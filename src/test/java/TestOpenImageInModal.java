@@ -1,5 +1,6 @@
 import WebDriverFactory.WebDriverFactory;
 import components.w3layouts.GalleryComponent;
+import components.w3layouts.modal.ImageModal;
 import exceptions.DriverNotSupportedException;
 import exceptions.ElementListIsEmptyException;
 import org.junit.jupiter.api.AfterEach;
@@ -20,7 +21,8 @@ public class TestOpenImageInModal {
     @Test
     public void testOpenImageInModal() throws ElementListIsEmptyException {
         new ImageGalleryPage(driver).open();
-        new GalleryComponent(driver).clickPreviewImage(4).modalIsDisplayed();
+        new ImageModal(driver).modalShouldNotBeView();
+        new GalleryComponent(driver).clickPreviewImage(4).modalShouldBeView();
     }
 
 
