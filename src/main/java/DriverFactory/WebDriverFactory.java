@@ -10,7 +10,8 @@ import java.util.Locale;
 
 public class WebDriverFactory implements IWebDriverFactory {
 
-    private String browserName = System.getProperty("browserName").toLowerCase(Locale.ROOT);
+ //   private String browserName = System.getProperty("browserName").toLowerCase(Locale.ROOT);
+    private String browserName = "chrome";
 
     @Override
     public WebDriver getDriver() throws DriverNotExistsException {

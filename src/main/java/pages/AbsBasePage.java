@@ -4,10 +4,13 @@ import org.openqa.selenium.WebDriver;
 import pageobject.AbsPageObject;
 
 public abstract class AbsBasePage extends AbsPageObject {
+    private final static String BASE_URL = "http://otus.ru";
 
     public AbsBasePage(WebDriver driver) {
         super(driver);
     }
 
-    public abstract void open();
+    public void open(String path) {
+        driver.get(BASE_URL + path);
+    }
 }
